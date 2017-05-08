@@ -1,0 +1,24 @@
+{
+  "name": "blackjack-in-the-shell",
+  "version": "1.0.0",
+  "description": "Somaya Bounouar Thomas Dunn http://jsdev.learnersguild.org/goals/68-Blackjack_Game_in_the_Shell_with_Node.html Specs are in the CONTRACT.md file",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test",
+    "start": "node src/game.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SomayaB/blackjack-in-the-shell.git"
+  },
+  "author": "Somaya Bounouar and Thomas Dunn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SomayaB/blackjack-in-the-shell/issues"
+  },
+  "homepage": "https://github.com/SomayaB/blackjack-in-the-shell#readme",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "readline-sync": "^1.4.7"
+  }
+}
