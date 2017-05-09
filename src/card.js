@@ -4,6 +4,7 @@ class Card {
     this.suit = suit
     this.point = point
   }
+  
 }
 
 module.exports = Card
