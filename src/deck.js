@@ -15,20 +15,19 @@ class Deck {
     const ranks = ['ace',2,3,4,5,6,7,8,9,10,'jack','queen','king']
     suits.forEach( (suit) => {
       ranks.forEach( (rank) => {
-        this.deckStack.push(new Card(suit, rank)) // .assignPoint?
+        this.deckStack.push(new Card(suit, rank))
+        this.deckStack = _.shuffle(deckStack) // .assignPoint?
       })
     })
   }
-  shuffleDeck() {
-    this.deckStack = _.shuffle(deckStack)
-  }
+
   initialDeal() {
     dealer.hand.push(deckStack(shift()))
     dealer.hand.push(deckStack(shift())) // somehow make this a jewel or something during gameplay
     player.hand.push(deckStack(shift())) // Game method will handle showing the jewel ?
     player.hand.push(deckStack(shift()))
   }
-  addCard() {
+  hit() {
     this.hand.push(deckStack(shift()))
   }
   // hit() {
