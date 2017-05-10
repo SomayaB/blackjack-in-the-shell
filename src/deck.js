@@ -3,11 +3,9 @@ const _ = require('lodash')
 // const col = require('colors')
 
 class Deck {
-
   constructor() {
     this.deckStack = []
   }
-
   createDeck() {
     const heart = col.bgWhite(‘❤️ ‘)
     const spade = col.bgWhite('♠️')
@@ -21,8 +19,19 @@ class Deck {
       })
     })
   }
-
   shuffleDeck() {
     this.deckStack = _.shuffle(deckStack)
   }
+  initialDeal() {
+    dealer.hand.push(deckStack(shift()))
+    dealer.hand.push(deckStack(shift())) // somehow make this a jewel or something during gameplay
+    player.hand.push(deckStack(shift())) // Game method will handle showing the jewel ?
+    player.hand.push(deckStack(shift()))
+  }
+  addCard() {
+    this.hand.push(deckStack(shift()))
+  }
+  // hit() {
+  //   this.playerHand.push(new Card(suit, rank))
+  // }
 }
