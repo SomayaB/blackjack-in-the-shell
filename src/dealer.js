@@ -1,10 +1,12 @@
 const Player = require('./player')
+const Deck = require('./deck')
 
 class Dealer extends Player {
   constructor() {
-    this.deck = new Deck().createDeck()
+    super()
+      this.deck = new Deck().createDeck()
     // set dealers bank to infinity
   }
 }
 
-module.exports = Dealer 
+module.exports = Dealer

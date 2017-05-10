@@ -6,6 +6,7 @@ class Player {
     this.hand = []
     this.bank = 100
     this.handTotal = 0
+    this.hasWon = false 
   }
   trackHandValue(hand) {
     let total = 0
@@ -17,6 +18,7 @@ class Player {
   hit() {
     this.hand.push(deckStack(shift()))
     console.log(this.hand)
+
   }
 }
 
