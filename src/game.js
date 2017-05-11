@@ -8,29 +8,34 @@ class Game {
   constructor() {
     this.player = new Player()
     this.dealer = new Dealer()
-  }
-
-  newGame() {
-    console.log('Are you ready to play?')
+    this.deck = new Deck()
+    this.MAX_SCORE = 21
   }
 
   initialDeal() {
-    this.dealer.hand.push(deckStack(shift()))
-    this.dealer.hand.push(deckStack(shift()))
-    this.dealer.trackHandValue(dealer.hand)
-    this.player.hand.push(deckStack(shift()))
-    this.player.hand.push(deckStack(shift()))
-    this.player.trackHandValue(player.hand)
-    console.log(this.dealer.hand)
-    console.log(this.player.hand)
+    this.dealer.hand.push(this.deck.deckStack.shift())
+    this.dealer.hand.push(this.deck.deckStack.shift())
+    this.dealer.trackHandValue(this.dealer.hand)
+    this.player.hand.push(this.deck.deckStack.shift())
+    this.player.hand.push(this.deck.deckStack.shift())
+    this.player.trackHandValue(this.player.hand)
+    console.log('dealers hand: ');
+    for (let i = 0; i < this.dealer.hand.length; i++) {
+      console.log(this.dealer.hand[i].rank, this.dealer.hand[i].suit )
+    }
+    // console.log('player hand: ', this.player.hand)
+    this.playerTurn()
   }
-  playerHit() {
-    hitStay = diag.question('Hit or Stand? (h/s): ')
-    if (hitStay !== 'h' && hitStay !== 's') {
+
+  playerTurn() {
+    let hitStand = diag.question('Hit or Stand? (h/s): ')
+    if (hitStand !== 'h' && hitStand !== 's') {
       console.log('Invalid, please input h or s')
-    } else if (hitStay == 'h') {
-       this.player.hit()
-    } else if (hitStay == 's') {
+    } else if (hitStand == 'h') {
+      console.log('before: ', this.deck.deckStack.length)
+       this.player.hit(this.deck)
+       console.log('after: ', this.deck.deckStack.length)
+    } else if (hitStand == 's') {
         console.log('Dealers turn')
         console.log(dealer.hand)
         dealerTurn()
@@ -38,10 +43,10 @@ class Game {
   }
 
   dealerTurn() {
-   while ( dealer.handTotal > player.handTotal ) {
-     if (dealer.handTotal === 21) {
+   while ( this.dealer.handTotal > this.player.handTotal ) {
+     if (this.dealer.handTotal === 21) {
        console.log('Dealer wins :(')
-     } else if (dealer.handTotal < 21 && dealer.handTotal > 16) {
+     } else if (this.dealer.handTotal < 21 && dealer.handTotal > 16) {
         this.dealer.hit()
         checkBust()
      }
@@ -49,13 +54,15 @@ class Game {
   }
 
   checkBust() {
-    if (dealer.handTotal > 21) {
-      console.log('Dealer busted, you win!!')
+    aceCase(this.dealer.hand)
+    aceCase(this.player.hand)
+    if (this.dealer.handTotal > 21) {
       this.player.hasWon = true
+      console.log('Dealer busted, you win!!')
       endGame()
-    } else if (player.handTotal > 21) {
-      console.log('You busted, you fool! Dealer wins!')
+    } else if (this.player.handTotal > 21) {
       this.dealer.hasWon = true
+      console.log('You busted, you fool! Dealer wins!')
       endGame()
     }
   }
@@ -75,18 +82,37 @@ class Game {
     }
   }
 
+  startGame() {
+    console.log('Welcome to BlackJack, fool!')
+    console.log('You have ' + '$' + this.player.bank + ' to blow!')
+    this.player.bet = diag.question('Place your bet if you dare: $')
+    // display do you want to play (y/n) and wait for input
+    console.log('Here we go(mario voice)!')
+    this.deck.createDeck()
+    // console.log('our deck!',this.deck.deckStack)
+    this.initialDeal()
+
+    // display and wait for player (h/s) input
+    // if hit run game.playerHit() and run checkBusT()
+    // if stays run game.dealerTurn()
+    //
+  }
+
   endGame() {
     if (this.player.hasWon) {
-      moneyWon = bet * 2
+      moneyWon = this.player.bet * 2
       this.player.bank += moneyWon
       console.log('Woohoo, you won ' + moneyWon + ' you now have $' + this.player.bank + ' in your bank!')
     } else if (this.dealer.hasWon) {
-        this.player.bank -= bet
-        console.log('Womp Womp, you lost $' + bet + ' you now have $' + this.player.bank + ' in your bank!')
+        this.player.bank -= this.player.bet
+        console.log('Womp Womp, you lost $' + this.player.bet + ' you now have $' + this.player.bank + ' in your bank!')
     }
   }
 
 }
 
+
 const myGame = new Game()
-myGame.newGame()
+myGame.startGame()
+
+module.exports = myGame

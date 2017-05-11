@@ -7,12 +7,13 @@ class Card {
 
   assignPoint( rank ) {
     if (this.rank === 'ace') {
-          this.point === 11
+          this.point = 11
     } else if (isNaN(this.rank)) {
        this.point = 10
     } else
-        this.rank === this.point
+        this.point = this.rank
   }
 }
+
 
 module.exports = Card
