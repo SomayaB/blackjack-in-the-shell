@@ -99,6 +99,9 @@ class Game {
       console.log('It\'s a tie!')
       this.endGame()
     } else {
+       for (let i = 0; i < this.dealer.hand.length; i++) {
+         console.log(this.dealer.hand[i].rank, this.dealer.hand[i].suit )
+       }
        console.log('\n')
        console.log('You lost, you fool! Dealer wins!')
        this.dealer.hasWon = true
@@ -161,7 +164,7 @@ class Game {
       let moneyWon = this.player.bet * 2
       this.player.bank += moneyWon
       console.log('\n')
-      console.log('Woohoo, you won $' + moneyWon + ', you now have $' + this.player.bank + ' in your bank!')
+      console.log('Woohoo, you won $' + moneyWon + '! You now have $' + this.player.bank + ' in your bank!')
 
       console.log('\n')
       let keepPlaying = diag.question('Do you dare to keep playing, you fool? (y/n): ')
