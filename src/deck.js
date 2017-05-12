@@ -14,11 +14,11 @@ class Deck {
     const club = '♣️ '
 
     const suits = [heart,spade,diamond,club]
-    const ranks = ['ace','2','3','4','5','6','7','8','9','10','jack','queen','king']
+    const ranks = ['Ace','2','3','4','5','6','7','8','9','10','Jack','Queen','King']
 
     suits.forEach( (suit) => {
       ranks.forEach( (rank) => {
-        this.deckStack.push(new Card(rank, suit)) // .assignPoint()
+        this.deckStack.push(new Card(rank, suit)) 
       })
     })
     for (let card in this.deckStack) {

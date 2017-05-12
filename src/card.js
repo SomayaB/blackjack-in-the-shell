@@ -4,9 +4,8 @@ class Card {
     this.suit = suit
     this.point = null
   }
-
   assignPoint( rank ) {
-    if (this.rank === 'ace') {
+    if (this.rank === 'Ace') {
           this.point = 11
     } else if (isNaN(this.rank)) {
        this.point = 10
