@@ -11,3 +11,5 @@ INSTRUCTIONS
 
 Run npm i to install the dependencies.
 Run npm start in Node to start the game.
+
+![alt text]("./blackjack.png")
