@@ -1,13 +1,15 @@
 #ashamed-fowl
-## Somaya Bounouar
-## Thomas Dunn
+### Somaya Bounouar
+### Thomas Dunn
 http://jsdev.learnersguild.org/goals/68-Blackjack_Game_in_the_Shell_with_Node.html
-Specs are in the CONTRACT.md file
-#68
+
 # blackjack-in-the-shell
 A playable blackjack game that is run in the terminal/shell.
 
-INSTRUCTIONS
+## Dev Setup
 
-Run npm i to install the dependencies.
-Run npm start in Node to start the game.
+1. Clone the repository.
+1. Install your dependencies `npm install`
+1. Start playing! `npm start`
+
+<img width="461" alt="blackjack" src="https://user-images.githubusercontent.com/23043132/34646612-ea4221a4-f33a-11e7-89f9-b534da100e19.png">
